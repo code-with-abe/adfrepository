@@ -1,0 +1,6 @@
+{
+	"name": "onpremsqlRuntime",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

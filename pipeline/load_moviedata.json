@@ -1,0 +1,137 @@
+{
+	"name": "load_moviedata",
+	"properties": {
+		"activities": [
+			{
+				"name": "copy_movies",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "CosmosDbSqlApiSource",
+						"preferredRegions": []
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['actors'][0]['name']"
+								},
+								"sink": {
+									"name": "name"
+								}
+							},
+							{
+								"source": {
+									"path": "$['availabilityDate']"
+								},
+								"sink": {
+									"name": "availabilityDate"
+								}
+							},
+							{
+								"source": {
+									"path": "$['genre']"
+								},
+								"sink": {
+									"name": "genre"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rating']"
+								},
+								"sink": {
+									"name": "rating"
+								}
+							},
+							{
+								"source": {
+									"path": "$['releaseYear']"
+								},
+								"sink": {
+									"name": "releaseYear"
+								}
+							},
+							{
+								"source": {
+									"path": "$['runtime']"
+								},
+								"sink": {
+									"name": "runtime"
+								}
+							},
+							{
+								"source": {
+									"path": "$['streamingAvailabilityDate']"
+								},
+								"sink": {
+									"name": "streamingAvailabilityDate"
+								}
+							},
+							{
+								"source": {
+									"path": "$['tier']"
+								},
+								"sink": {
+									"name": "tier"
+								}
+							},
+							{
+								"source": {
+									"path": "$['title']"
+								},
+								"sink": {
+									"name": "title"
+								}
+							},
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"name": "id"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "moviedata",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "movedata",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-02-10T02:03:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,21 @@
+{
+	"name": "OrderDetailsFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "abestorage01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "OrderDetails",
+				"fileSystem": "cloudsales01"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
