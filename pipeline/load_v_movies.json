@@ -1,0 +1,132 @@
+{
+	"name": "load_v_movies",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "MovieID",
+									"type": "Guid",
+									"physicalType": "uniqueidentifier"
+								},
+								"sink": {
+									"name": "MovieID",
+									"type": "Guid",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "MovieTitle",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MovieTitle",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Category",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Category",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "Rating",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Rating",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							},
+							{
+								"source": {
+									"name": "RunTimeMin",
+									"type": "Int16",
+									"physicalType": "smallint"
+								},
+								"sink": {
+									"name": "RunTimeMin",
+									"type": "Int16",
+									"physicalType": "INT_32"
+								}
+							},
+							{
+								"source": {
+									"name": "ReleaseDate",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ReleaseDate",
+									"type": "String",
+									"physicalType": "UTF8"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "movies_v",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "movies_v_parquet",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

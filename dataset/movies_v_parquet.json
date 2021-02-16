@@ -1,0 +1,19 @@
+{
+	"name": "movies_v_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "abestorage01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "vanarsdel"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
