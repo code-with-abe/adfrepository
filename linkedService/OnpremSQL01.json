@@ -1,0 +1,17 @@
+{
+	"name": "OnpremSQL01",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=True;data source=OHDataOnPremSQL;initial catalog=OnPremRentals",
+			"userName": "OHDataOnPremSQL\\southridge",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjNTM2ZWYyNi0xYTAzLTQxZGMtOWE0ZS02MTE3ZDBlOWU0MzIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "onpremsqlRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
