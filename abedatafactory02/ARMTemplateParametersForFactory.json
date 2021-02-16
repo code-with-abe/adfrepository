@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "abedatafactory02"
+		},
+		"CloudSalesDB_connectionString": {
+			"value": ""
+		},
+		"CloudStreaming_connectionString": {
+			"value": ""
+		},
+		"FourthCoffeeFiles_password": {
+			"value": ""
+		},
+		"OnpremSQL01_connectionString": {
+			"value": ""
+		},
+		"OnpremSQL01_password": {
+			"value": ""
+		},
+		"abestorage01_accountKey": {
+			"value": ""
+		},
+		"moviecollection_connectionString": {
+			"value": ""
+		},
+		"FourthCoffeeFiles_properties_typeProperties_host": {
+			"value": "C:\\Rentals"
+		},
+		"FourthCoffeeFiles_properties_typeProperties_userId": {
+			"value": "southridge"
+		},
+		"OnpremSQL01_properties_typeProperties_userName": {
+			"value": "OHDataOnPremSQL\\southridge"
+		},
+		"abestorage01_properties_typeProperties_url": {
+			"value": "https://abestorage01.dfs.core.windows.net"
+		}
+	}
+}

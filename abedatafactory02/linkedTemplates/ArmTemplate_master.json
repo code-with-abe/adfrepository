@@ -1,0 +1,139 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "abedatafactory02"
+		},
+		"CloudSalesDB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CloudSalesDB'"
+		},
+		"CloudStreaming_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CloudStreaming'"
+		},
+		"FourthCoffeeFiles_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'FourthCoffeeFiles'"
+		},
+		"OnpremSQL01_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'OnpremSQL01'"
+		},
+		"OnpremSQL01_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'OnpremSQL01'"
+		},
+		"abestorage01_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'abestorage01'"
+		},
+		"moviecollection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'moviecollection'"
+		},
+		"FourthCoffeeFiles_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\Rentals"
+		},
+		"FourthCoffeeFiles_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "southridge"
+		},
+		"OnpremSQL01_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "OHDataOnPremSQL\\southridge"
+		},
+		"abestorage01_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://abestorage01.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "abedatafactory02_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"CloudSalesDB_connectionString": {
+						"value": "[parameters('CloudSalesDB_connectionString')]"
+					},
+					"CloudStreaming_connectionString": {
+						"value": "[parameters('CloudStreaming_connectionString')]"
+					},
+					"FourthCoffeeFiles_password": {
+						"value": "[parameters('FourthCoffeeFiles_password')]"
+					},
+					"OnpremSQL01_connectionString": {
+						"value": "[parameters('OnpremSQL01_connectionString')]"
+					},
+					"OnpremSQL01_password": {
+						"value": "[parameters('OnpremSQL01_password')]"
+					},
+					"abestorage01_accountKey": {
+						"value": "[parameters('abestorage01_accountKey')]"
+					},
+					"moviecollection_connectionString": {
+						"value": "[parameters('moviecollection_connectionString')]"
+					},
+					"FourthCoffeeFiles_properties_typeProperties_host": {
+						"value": "[parameters('FourthCoffeeFiles_properties_typeProperties_host')]"
+					},
+					"FourthCoffeeFiles_properties_typeProperties_userId": {
+						"value": "[parameters('FourthCoffeeFiles_properties_typeProperties_userId')]"
+					},
+					"OnpremSQL01_properties_typeProperties_userName": {
+						"value": "[parameters('OnpremSQL01_properties_typeProperties_userName')]"
+					},
+					"abestorage01_properties_typeProperties_url": {
+						"value": "[parameters('abestorage01_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "abedatafactory02_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'abedatafactory02_ArmTemplate_0')]"
+			]
+		}
+	]
+}
