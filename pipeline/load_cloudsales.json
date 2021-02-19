@@ -4,7 +4,7 @@
 		"activities": [
 			{
 				"name": "Copy Order Details",
-				"description": "coyp order details",
+				"description": "coyp order details adfgsdfg",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
