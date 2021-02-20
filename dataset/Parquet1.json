@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "{year}",
-					"type": "Expression"
-				},
 				"folderPath": "us/cloudsales",
 				"fileSystem": "raw"
 			},
