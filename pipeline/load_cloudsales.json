@@ -3,8 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy Order Details",
-				"description": "coyp order details",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -33,106 +32,6 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "OrderDetailID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "OrderDetailID",
-									"type": "Guid",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "OrderID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "OrderID",
-									"type": "Guid",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "MovieID",
-									"type": "Guid",
-									"physicalType": "uniqueidentifier"
-								},
-								"sink": {
-									"name": "MovieID",
-									"type": "Guid",
-									"physicalType": "UTF8"
-								}
-							},
-							{
-								"source": {
-									"name": "Quantity",
-									"type": "Byte",
-									"physicalType": "tinyint"
-								},
-								"sink": {
-									"name": "Quantity",
-									"type": "Byte",
-									"physicalType": "INT_32"
-								}
-							},
-							{
-								"source": {
-									"name": "UnitCost",
-									"type": "Decimal",
-									"physicalType": "money",
-									"scale": 4,
-									"precision": 19
-								},
-								"sink": {
-									"name": "UnitCost",
-									"type": "Decimal",
-									"physicalType": "DECIMAL"
-								}
-							},
-							{
-								"source": {
-									"name": "LineNumber",
-									"type": "Byte",
-									"physicalType": "tinyint"
-								},
-								"sink": {
-									"name": "LineNumber",
-									"type": "Byte",
-									"physicalType": "INT_32"
-								}
-							},
-							{
-								"source": {
-									"name": "CreatedDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								},
-								"sink": {
-									"name": "CreatedDate",
-									"type": "DateTime",
-									"physicalType": "INT_96"
-								}
-							},
-							{
-								"source": {
-									"name": "UpdatedDate",
-									"type": "DateTime",
-									"physicalType": "date"
-								},
-								"sink": {
-									"name": "UpdatedDate",
-									"type": "DateTime",
-									"physicalType": "INT_96"
-								}
-							}
-						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -142,13 +41,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "OrderDetails",
+						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "OrderDetailsFiles",
+						"referenceName": "Parquet1",
 						"type": "DatasetReference"
 					}
 				]
