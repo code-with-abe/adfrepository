@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "OrderDetails",
-				"fileSystem": "cloudsales01"
+				"folderPath": "us/cloudsales",
+				"fileSystem": "raw"
 			},
 			"compressionCodec": "snappy"
 		},
